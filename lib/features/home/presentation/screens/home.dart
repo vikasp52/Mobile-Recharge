@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_recharge/core/assets/assets.dart';
+import 'package:mobile_recharge/core/routing/routing.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,7 +8,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.white.withOpacity(0.8),
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: CustomColors.primary,
         label: const Text(
@@ -16,7 +16,9 @@ class HomePage extends StatelessWidget {
             color: CustomColors.white,
           ),
         ),
-        onPressed: () {},
+        onPressed: () => RouteGenerator.pushName(
+          routeName: RouteGenerator.addBeneficiarieRoute,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -151,13 +153,8 @@ class HomePage extends StatelessWidget {
                           onPressed: () {},
                           child: const Text(
                             'Recharge now',
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: CustomColors.white,
-                              fontWeight: FontWeight.w500,
-                            ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   );
