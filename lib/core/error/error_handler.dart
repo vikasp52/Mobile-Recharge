@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:mobile_recharge/core/utils/utils.dart';
 
 String handleDioError(DioException error) {
-  print('Error is: ${error}');
   if (error.response != null) {
     return error.response!.data;
   } else {

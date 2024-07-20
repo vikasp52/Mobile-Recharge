@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:mobile_recharge/core/error/error_handler.dart';
 import 'package:mobile_recharge/features/home/data/model/user.dart';
-import 'package:mobile_recharge/features/home/data/repository/user_mock_data.dart';
+import 'package:mobile_recharge/features/home/data/data_source/user_mock_data.dart';
 
 class UserRepository {
   final MockApiClient _userDataSource;

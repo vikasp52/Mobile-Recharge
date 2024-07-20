@@ -11,7 +11,7 @@ class User with _$User {
   @JsonSerializable(includeIfNull: false)
   const factory User({
     @JsonKey(name: 'user') required UserData? user,
-    required List<Beneficiaries>? beneficiaries,
+    required List<Beneficiary>? beneficiaries,
   }) = _User;
 
   factory User.fromJson(Map<String, Object?> json) => _$UserFromJson(json);
@@ -31,15 +31,15 @@ class UserData with _$UserData {
 }
 
 @freezed
-class Beneficiaries with _$Beneficiaries {
+class Beneficiary with _$Beneficiary {
   @JsonSerializable(includeIfNull: false)
-  const factory Beneficiaries({
-    required String? id,
+  const factory Beneficiary({
+    String? id,
     required String? nickname,
     required String? mobile,
     required int? totalTopUp,
-  }) = _Beneficiaries;
+  }) = _Beneficiary;
 
-  factory Beneficiaries.fromJson(Map<String, Object?> json) =>
-      _$BeneficiariesFromJson(json);
+  factory Beneficiary.fromJson(Map<String, Object?> json) =>
+      _$BeneficiaryFromJson(json);
 }

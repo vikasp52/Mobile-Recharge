@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   @JsonKey(name: 'user')
   UserData? get user => throw _privateConstructorUsedError;
-  List<Beneficiaries>? get beneficiaries => throw _privateConstructorUsedError;
+  List<Beneficiary>? get beneficiaries => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'user') UserData? user,
-      List<Beneficiaries>? beneficiaries});
+      List<Beneficiary>? beneficiaries});
 
   $UserDataCopyWith<$Res>? get user;
 }
@@ -65,7 +65,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       beneficiaries: freezed == beneficiaries
           ? _value.beneficiaries
           : beneficiaries // ignore: cast_nullable_to_non_nullable
-              as List<Beneficiaries>?,
+              as List<Beneficiary>?,
     ) as $Val);
   }
 
@@ -91,7 +91,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'user') UserData? user,
-      List<Beneficiaries>? beneficiaries});
+      List<Beneficiary>? beneficiaries});
 
   @override
   $UserDataCopyWith<$Res>? get user;
@@ -118,7 +118,7 @@ class __$$UserImplCopyWithImpl<$Res>
       beneficiaries: freezed == beneficiaries
           ? _value._beneficiaries
           : beneficiaries // ignore: cast_nullable_to_non_nullable
-              as List<Beneficiaries>?,
+              as List<Beneficiary>?,
     ));
   }
 }
@@ -129,7 +129,7 @@ class __$$UserImplCopyWithImpl<$Res>
 class _$UserImpl implements _User {
   const _$UserImpl(
       {@JsonKey(name: 'user') required this.user,
-      required final List<Beneficiaries>? beneficiaries})
+      required final List<Beneficiary>? beneficiaries})
       : _beneficiaries = beneficiaries;
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
@@ -138,9 +138,9 @@ class _$UserImpl implements _User {
   @override
   @JsonKey(name: 'user')
   final UserData? user;
-  final List<Beneficiaries>? _beneficiaries;
+  final List<Beneficiary>? _beneficiaries;
   @override
-  List<Beneficiaries>? get beneficiaries {
+  List<Beneficiary>? get beneficiaries {
     final value = _beneficiaries;
     if (value == null) return null;
     if (_beneficiaries is EqualUnmodifiableListView) return _beneficiaries;
@@ -185,7 +185,7 @@ class _$UserImpl implements _User {
 abstract class _User implements User {
   const factory _User(
       {@JsonKey(name: 'user') required final UserData? user,
-      required final List<Beneficiaries>? beneficiaries}) = _$UserImpl;
+      required final List<Beneficiary>? beneficiaries}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
@@ -193,7 +193,7 @@ abstract class _User implements User {
   @JsonKey(name: 'user')
   UserData? get user;
   @override
-  List<Beneficiaries>? get beneficiaries;
+  List<Beneficiary>? get beneficiaries;
   @override
   @JsonKey(ignore: true)
   _$$UserImplCopyWith<_$UserImpl> get copyWith =>
@@ -373,12 +373,12 @@ abstract class _UserData implements UserData {
       throw _privateConstructorUsedError;
 }
 
-Beneficiaries _$BeneficiariesFromJson(Map<String, dynamic> json) {
-  return _Beneficiaries.fromJson(json);
+Beneficiary _$BeneficiaryFromJson(Map<String, dynamic> json) {
+  return _Beneficiary.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Beneficiaries {
+mixin _$Beneficiary {
   String? get id => throw _privateConstructorUsedError;
   String? get nickname => throw _privateConstructorUsedError;
   String? get mobile => throw _privateConstructorUsedError;
@@ -386,23 +386,23 @@ mixin _$Beneficiaries {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BeneficiariesCopyWith<Beneficiaries> get copyWith =>
+  $BeneficiaryCopyWith<Beneficiary> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BeneficiariesCopyWith<$Res> {
-  factory $BeneficiariesCopyWith(
-          Beneficiaries value, $Res Function(Beneficiaries) then) =
-      _$BeneficiariesCopyWithImpl<$Res, Beneficiaries>;
+abstract class $BeneficiaryCopyWith<$Res> {
+  factory $BeneficiaryCopyWith(
+          Beneficiary value, $Res Function(Beneficiary) then) =
+      _$BeneficiaryCopyWithImpl<$Res, Beneficiary>;
   @useResult
   $Res call({String? id, String? nickname, String? mobile, int? totalTopUp});
 }
 
 /// @nodoc
-class _$BeneficiariesCopyWithImpl<$Res, $Val extends Beneficiaries>
-    implements $BeneficiariesCopyWith<$Res> {
-  _$BeneficiariesCopyWithImpl(this._value, this._then);
+class _$BeneficiaryCopyWithImpl<$Res, $Val extends Beneficiary>
+    implements $BeneficiaryCopyWith<$Res> {
+  _$BeneficiaryCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -439,22 +439,22 @@ class _$BeneficiariesCopyWithImpl<$Res, $Val extends Beneficiaries>
 }
 
 /// @nodoc
-abstract class _$$BeneficiariesImplCopyWith<$Res>
-    implements $BeneficiariesCopyWith<$Res> {
-  factory _$$BeneficiariesImplCopyWith(
-          _$BeneficiariesImpl value, $Res Function(_$BeneficiariesImpl) then) =
-      __$$BeneficiariesImplCopyWithImpl<$Res>;
+abstract class _$$BeneficiaryImplCopyWith<$Res>
+    implements $BeneficiaryCopyWith<$Res> {
+  factory _$$BeneficiaryImplCopyWith(
+          _$BeneficiaryImpl value, $Res Function(_$BeneficiaryImpl) then) =
+      __$$BeneficiaryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? id, String? nickname, String? mobile, int? totalTopUp});
 }
 
 /// @nodoc
-class __$$BeneficiariesImplCopyWithImpl<$Res>
-    extends _$BeneficiariesCopyWithImpl<$Res, _$BeneficiariesImpl>
-    implements _$$BeneficiariesImplCopyWith<$Res> {
-  __$$BeneficiariesImplCopyWithImpl(
-      _$BeneficiariesImpl _value, $Res Function(_$BeneficiariesImpl) _then)
+class __$$BeneficiaryImplCopyWithImpl<$Res>
+    extends _$BeneficiaryCopyWithImpl<$Res, _$BeneficiaryImpl>
+    implements _$$BeneficiaryImplCopyWith<$Res> {
+  __$$BeneficiaryImplCopyWithImpl(
+      _$BeneficiaryImpl _value, $Res Function(_$BeneficiaryImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -465,7 +465,7 @@ class __$$BeneficiariesImplCopyWithImpl<$Res>
     Object? mobile = freezed,
     Object? totalTopUp = freezed,
   }) {
-    return _then(_$BeneficiariesImpl(
+    return _then(_$BeneficiaryImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -489,15 +489,15 @@ class __$$BeneficiariesImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(includeIfNull: false)
-class _$BeneficiariesImpl implements _Beneficiaries {
-  const _$BeneficiariesImpl(
-      {required this.id,
+class _$BeneficiaryImpl implements _Beneficiary {
+  const _$BeneficiaryImpl(
+      {this.id,
       required this.nickname,
       required this.mobile,
       required this.totalTopUp});
 
-  factory _$BeneficiariesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BeneficiariesImplFromJson(json);
+  factory _$BeneficiaryImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BeneficiaryImplFromJson(json);
 
   @override
   final String? id;
@@ -510,14 +510,14 @@ class _$BeneficiariesImpl implements _Beneficiaries {
 
   @override
   String toString() {
-    return 'Beneficiaries(id: $id, nickname: $nickname, mobile: $mobile, totalTopUp: $totalTopUp)';
+    return 'Beneficiary(id: $id, nickname: $nickname, mobile: $mobile, totalTopUp: $totalTopUp)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BeneficiariesImpl &&
+            other is _$BeneficiaryImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
@@ -534,26 +534,26 @@ class _$BeneficiariesImpl implements _Beneficiaries {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BeneficiariesImplCopyWith<_$BeneficiariesImpl> get copyWith =>
-      __$$BeneficiariesImplCopyWithImpl<_$BeneficiariesImpl>(this, _$identity);
+  _$$BeneficiaryImplCopyWith<_$BeneficiaryImpl> get copyWith =>
+      __$$BeneficiaryImplCopyWithImpl<_$BeneficiaryImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BeneficiariesImplToJson(
+    return _$$BeneficiaryImplToJson(
       this,
     );
   }
 }
 
-abstract class _Beneficiaries implements Beneficiaries {
-  const factory _Beneficiaries(
-      {required final String? id,
+abstract class _Beneficiary implements Beneficiary {
+  const factory _Beneficiary(
+      {final String? id,
       required final String? nickname,
       required final String? mobile,
-      required final int? totalTopUp}) = _$BeneficiariesImpl;
+      required final int? totalTopUp}) = _$BeneficiaryImpl;
 
-  factory _Beneficiaries.fromJson(Map<String, dynamic> json) =
-      _$BeneficiariesImpl.fromJson;
+  factory _Beneficiary.fromJson(Map<String, dynamic> json) =
+      _$BeneficiaryImpl.fromJson;
 
   @override
   String? get id;
@@ -565,6 +565,6 @@ abstract class _Beneficiaries implements Beneficiaries {
   int? get totalTopUp;
   @override
   @JsonKey(ignore: true)
-  _$$BeneficiariesImplCopyWith<_$BeneficiariesImpl> get copyWith =>
+  _$$BeneficiaryImplCopyWith<_$BeneficiaryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -9,6 +9,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<UserCubit>();
+
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: CustomColors.primary,
@@ -20,6 +22,10 @@ class HomePage extends StatelessWidget {
         ),
         onPressed: () => RouteGenerator.pushName(
           routeName: RouteGenerator.addBeneficiarieRoute,
+        )?.then(
+          (value) {
+            if (value) cubit.getUserDetails();
+          },
         ),
       ),
       body: BlocBuilder<UserCubit, UserState>(
@@ -140,7 +146,7 @@ class HomePage extends StatelessWidget {
                       height: 130,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
-                        children: user.beneficiaries!.map((item) {
+                        children: user.beneficiaries!.map((beneficiary) {
                           return Container(
                             padding: const EdgeInsets.all(8),
                             margin: const EdgeInsets.symmetric(
@@ -157,7 +163,7 @@ class HomePage extends StatelessWidget {
                             child: Column(
                               children: [
                                 Text(
-                                  item.nickname ?? '',
+                                  beneficiary.nickname ?? '',
                                   style: const TextStyle(
                                     color: CustomColors.primary,
                                     fontSize: 18,
@@ -168,7 +174,7 @@ class HomePage extends StatelessWidget {
                                   height: 5,
                                 ),
                                 Text(
-                                  item.mobile ?? '',
+                                  beneficiary.mobile ?? '',
                                   style: const TextStyle(
                                     color: CustomColors.black,
                                     fontSize: 14,
@@ -181,6 +187,10 @@ class HomePage extends StatelessWidget {
                                 ElevatedButton(
                                   onPressed: () => RouteGenerator.pushName(
                                     routeName: RouteGenerator.rechargeRoute,
+                                    argument: {
+                                      'user': user,
+                                      'beneficiary': beneficiary,
+                                    },
                                   ),
                                   child: const Text(
                                     'Recharge now',

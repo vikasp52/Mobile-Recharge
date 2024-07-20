@@ -11,7 +11,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
           ? null
           : UserData.fromJson(json['user'] as Map<String, dynamic>),
       beneficiaries: (json['beneficiaries'] as List<dynamic>?)
-          ?.map((e) => Beneficiaries.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Beneficiary.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
@@ -43,15 +43,15 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
       'isVerified': instance.isVerified,
     };
 
-_$BeneficiariesImpl _$$BeneficiariesImplFromJson(Map<String, dynamic> json) =>
-    _$BeneficiariesImpl(
+_$BeneficiaryImpl _$$BeneficiaryImplFromJson(Map<String, dynamic> json) =>
+    _$BeneficiaryImpl(
       id: json['id'] as String?,
       nickname: json['nickname'] as String?,
       mobile: json['mobile'] as String?,
       totalTopUp: (json['totalTopUp'] as num?)?.toInt(),
     );
 
-Map<String, dynamic> _$$BeneficiariesImplToJson(_$BeneficiariesImpl instance) {
+Map<String, dynamic> _$$BeneficiaryImplToJson(_$BeneficiaryImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

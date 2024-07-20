@@ -10,8 +10,8 @@
 class Assets {
   Assets._();
 
-  static const String mockUsers = 'assets/mock_users.json';
+  static const String mockUser = 'assets/mock_user.json';
 
   /// List of all assets
-  static List<String> get values => [mockUsers];
+  static List<String> get values => [mockUser];
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_recharge/core/di/injection_container.dart';
-import 'package:mobile_recharge/features/add_beneficiarie/add_beneficiarie.dart';
-import 'package:mobile_recharge/features/home/data/repository/user_repository.dart';
-import 'package:mobile_recharge/features/home/presentation/cubit/user_cubit.dart';
-import 'package:mobile_recharge/features/recharge/recharge.dart';
+import 'package:mobile_recharge/features/add_beneficiary/add_beneficiary.dart';
+import 'package:mobile_recharge/features/add_beneficiary/cubit/add_beneficiary_cubit.dart';
+import 'package:mobile_recharge/features/home/data/model/user.dart';
+import 'package:mobile_recharge/features/recharge/presentation/recharge.dart';
 
 class RouteGenerator {
   static const String addBeneficiarieRoute = '/AddBeneficiarieScreen';
@@ -35,15 +34,18 @@ class RouteGenerator {
     switch (routeSettings.name) {
       case addBeneficiarieRoute:
         screen = BlocProvider(
-          create: (context) => UserCubit(
-            serviceLocator<UserRepository>(),
-          ),
-          child: const AddBeneficiarie(),
+          create: (context) => AddBeneficiaryCubit(),
+          child: const AddBeneficiary(),
         );
         break;
 
       case rechargeRoute:
-        screen = const Recharge();
+        final data = routeSettings.arguments as Map<String, Object>;
+
+        screen = Recharge(
+          user: data['user'] as User,
+          beneficiary: data['beneficiary'] as Beneficiary,
+        );
         break;
 
       default:
