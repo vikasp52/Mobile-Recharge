@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_recharge/features/add_beneficiary/add_beneficiary.dart';
+import 'package:mobile_recharge/features/add_beneficiary/screens/add_beneficiary.dart';
 import 'package:mobile_recharge/features/add_beneficiary/cubit/add_beneficiary_cubit.dart';
 import 'package:mobile_recharge/features/home/data/model/user.dart';
 import 'package:mobile_recharge/features/recharge/cubit/top_up_cubit.dart';
-import 'package:mobile_recharge/features/recharge/presentation/recharge.dart';
+import 'package:mobile_recharge/features/recharge/screens/recharge.dart';
 
 class RouteGenerator {
   static const String addBeneficiarieRoute = '/AddBeneficiarieScreen';

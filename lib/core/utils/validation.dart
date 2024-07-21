@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 String? phoneValidation(value) {
   if ((value?.isEmpty ?? true) || (value!.length != 9)) {
     return 'Enter a valid mobile number';
@@ -13,3 +15,13 @@ String? nameValidation(value) {
   }
   return null;
 }
+
+var nicknameInputFormatters = <TextInputFormatter>[
+  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z\\s]")),
+];
+
+var phoneInputFormatters = <TextInputFormatter>[
+  FilteringTextInputFormatter.allow(
+    RegExp("[0-9]"),
+  ),
+];
