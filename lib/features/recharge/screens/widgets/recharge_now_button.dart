@@ -8,10 +8,12 @@ class RechargeNowButton extends StatelessWidget {
     super.key,
     required this.cubit,
     required this.beneficiary,
+    required this.formKey,
   });
 
   final TopUpCubit cubit;
   final Beneficiary beneficiary;
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,10 @@ class RechargeNowButton extends StatelessWidget {
           height: 50,
           child: ElevatedButton(
             onPressed: () {
-              cubit.performTopUp(beneficiary);
+              if (formKey.currentState!.validate()) {
+                // Form is valid, perform your action
+                cubit.performTopUp(beneficiary);
+              }
             },
             child: const Text(
               'Recharge Now',
