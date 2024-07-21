@@ -29,8 +29,6 @@ class AddBeneficiaryCubit extends Cubit<AddBeneficiaryState> {
 
       if (beneficiaries.length < 5) {
         try {
-          //beneficiaries.add(beneficiarie);
-
           final user = userData.copyWith(
               beneficiaries: [...?userData.beneficiaries, beneficiarie]);
 

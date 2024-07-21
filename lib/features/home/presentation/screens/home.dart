@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: CustomColors.primary,
         label: const Text(
-          '+ Add Beneficiarie',
+          '+ Add Beneficiary',
           style: TextStyle(
             color: CustomColors.white,
           ),
@@ -190,6 +190,12 @@ class HomePage extends StatelessWidget {
                                     argument: {
                                       'user': user,
                                       'beneficiary': beneficiary,
+                                    },
+                                  )?.then(
+                                    (value) {
+                                      if (value != null && value) {
+                                        cubit.getUserDetails();
+                                      }
                                     },
                                   ),
                                   child: const Text(

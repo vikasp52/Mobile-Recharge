@@ -382,7 +382,7 @@ mixin _$Beneficiary {
   String? get id => throw _privateConstructorUsedError;
   String? get nickname => throw _privateConstructorUsedError;
   String? get mobile => throw _privateConstructorUsedError;
-  int? get totalTopUp => throw _privateConstructorUsedError;
+  List<TopUpTransaction> get transactions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -396,7 +396,11 @@ abstract class $BeneficiaryCopyWith<$Res> {
           Beneficiary value, $Res Function(Beneficiary) then) =
       _$BeneficiaryCopyWithImpl<$Res, Beneficiary>;
   @useResult
-  $Res call({String? id, String? nickname, String? mobile, int? totalTopUp});
+  $Res call(
+      {String? id,
+      String? nickname,
+      String? mobile,
+      List<TopUpTransaction> transactions});
 }
 
 /// @nodoc
@@ -415,7 +419,7 @@ class _$BeneficiaryCopyWithImpl<$Res, $Val extends Beneficiary>
     Object? id = freezed,
     Object? nickname = freezed,
     Object? mobile = freezed,
-    Object? totalTopUp = freezed,
+    Object? transactions = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -430,10 +434,10 @@ class _$BeneficiaryCopyWithImpl<$Res, $Val extends Beneficiary>
           ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalTopUp: freezed == totalTopUp
-          ? _value.totalTopUp
-          : totalTopUp // ignore: cast_nullable_to_non_nullable
-              as int?,
+      transactions: null == transactions
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TopUpTransaction>,
     ) as $Val);
   }
 }
@@ -446,7 +450,11 @@ abstract class _$$BeneficiaryImplCopyWith<$Res>
       __$$BeneficiaryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String? nickname, String? mobile, int? totalTopUp});
+  $Res call(
+      {String? id,
+      String? nickname,
+      String? mobile,
+      List<TopUpTransaction> transactions});
 }
 
 /// @nodoc
@@ -463,7 +471,7 @@ class __$$BeneficiaryImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? nickname = freezed,
     Object? mobile = freezed,
-    Object? totalTopUp = freezed,
+    Object? transactions = null,
   }) {
     return _then(_$BeneficiaryImpl(
       id: freezed == id
@@ -478,10 +486,10 @@ class __$$BeneficiaryImplCopyWithImpl<$Res>
           ? _value.mobile
           : mobile // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalTopUp: freezed == totalTopUp
-          ? _value.totalTopUp
-          : totalTopUp // ignore: cast_nullable_to_non_nullable
-              as int?,
+      transactions: null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<TopUpTransaction>,
     ));
   }
 }
@@ -494,7 +502,8 @@ class _$BeneficiaryImpl implements _Beneficiary {
       {this.id,
       required this.nickname,
       required this.mobile,
-      required this.totalTopUp});
+      required final List<TopUpTransaction> transactions})
+      : _transactions = transactions;
 
   factory _$BeneficiaryImpl.fromJson(Map<String, dynamic> json) =>
       _$$BeneficiaryImplFromJson(json);
@@ -505,12 +514,17 @@ class _$BeneficiaryImpl implements _Beneficiary {
   final String? nickname;
   @override
   final String? mobile;
+  final List<TopUpTransaction> _transactions;
   @override
-  final int? totalTopUp;
+  List<TopUpTransaction> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
 
   @override
   String toString() {
-    return 'Beneficiary(id: $id, nickname: $nickname, mobile: $mobile, totalTopUp: $totalTopUp)';
+    return 'Beneficiary(id: $id, nickname: $nickname, mobile: $mobile, transactions: $transactions)';
   }
 
   @override
@@ -522,14 +536,14 @@ class _$BeneficiaryImpl implements _Beneficiary {
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.mobile, mobile) || other.mobile == mobile) &&
-            (identical(other.totalTopUp, totalTopUp) ||
-                other.totalTopUp == totalTopUp));
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, nickname, mobile, totalTopUp);
+  int get hashCode => Object.hash(runtimeType, id, nickname, mobile,
+      const DeepCollectionEquality().hash(_transactions));
 
   @JsonKey(ignore: true)
   @override
@@ -550,7 +564,7 @@ abstract class _Beneficiary implements Beneficiary {
       {final String? id,
       required final String? nickname,
       required final String? mobile,
-      required final int? totalTopUp}) = _$BeneficiaryImpl;
+      required final List<TopUpTransaction> transactions}) = _$BeneficiaryImpl;
 
   factory _Beneficiary.fromJson(Map<String, dynamic> json) =
       _$BeneficiaryImpl.fromJson;
@@ -562,9 +576,165 @@ abstract class _Beneficiary implements Beneficiary {
   @override
   String? get mobile;
   @override
-  int? get totalTopUp;
+  List<TopUpTransaction> get transactions;
   @override
   @JsonKey(ignore: true)
   _$$BeneficiaryImplCopyWith<_$BeneficiaryImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+TopUpTransaction _$TopUpTransactionFromJson(Map<String, dynamic> json) {
+  return _TopUpTransaction.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TopUpTransaction {
+  DateTime get date => throw _privateConstructorUsedError;
+  int get amount => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TopUpTransactionCopyWith<TopUpTransaction> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TopUpTransactionCopyWith<$Res> {
+  factory $TopUpTransactionCopyWith(
+          TopUpTransaction value, $Res Function(TopUpTransaction) then) =
+      _$TopUpTransactionCopyWithImpl<$Res, TopUpTransaction>;
+  @useResult
+  $Res call({DateTime date, int amount});
+}
+
+/// @nodoc
+class _$TopUpTransactionCopyWithImpl<$Res, $Val extends TopUpTransaction>
+    implements $TopUpTransactionCopyWith<$Res> {
+  _$TopUpTransactionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? amount = null,
+  }) {
+    return _then(_value.copyWith(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$TopUpTransactionImplCopyWith<$Res>
+    implements $TopUpTransactionCopyWith<$Res> {
+  factory _$$TopUpTransactionImplCopyWith(_$TopUpTransactionImpl value,
+          $Res Function(_$TopUpTransactionImpl) then) =
+      __$$TopUpTransactionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({DateTime date, int amount});
+}
+
+/// @nodoc
+class __$$TopUpTransactionImplCopyWithImpl<$Res>
+    extends _$TopUpTransactionCopyWithImpl<$Res, _$TopUpTransactionImpl>
+    implements _$$TopUpTransactionImplCopyWith<$Res> {
+  __$$TopUpTransactionImplCopyWithImpl(_$TopUpTransactionImpl _value,
+      $Res Function(_$TopUpTransactionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? amount = null,
+  }) {
+    return _then(_$TopUpTransactionImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      amount: null == amount
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+@JsonSerializable(includeIfNull: false)
+class _$TopUpTransactionImpl implements _TopUpTransaction {
+  const _$TopUpTransactionImpl({required this.date, required this.amount});
+
+  factory _$TopUpTransactionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TopUpTransactionImplFromJson(json);
+
+  @override
+  final DateTime date;
+  @override
+  final int amount;
+
+  @override
+  String toString() {
+    return 'TopUpTransaction(date: $date, amount: $amount)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TopUpTransactionImpl &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.amount, amount) || other.amount == amount));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, date, amount);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TopUpTransactionImplCopyWith<_$TopUpTransactionImpl> get copyWith =>
+      __$$TopUpTransactionImplCopyWithImpl<_$TopUpTransactionImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TopUpTransactionImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TopUpTransaction implements TopUpTransaction {
+  const factory _TopUpTransaction(
+      {required final DateTime date,
+      required final int amount}) = _$TopUpTransactionImpl;
+
+  factory _TopUpTransaction.fromJson(Map<String, dynamic> json) =
+      _$TopUpTransactionImpl.fromJson;
+
+  @override
+  DateTime get date;
+  @override
+  int get amount;
+  @override
+  @JsonKey(ignore: true)
+  _$$TopUpTransactionImplCopyWith<_$TopUpTransactionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

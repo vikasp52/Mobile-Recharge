@@ -1,6 +1,13 @@
 part of 'top_up_cubit.dart';
 
-@immutable
-sealed class TopUpState {}
+@freezed
+abstract class TopUpState with _$TopUpState {
+  factory TopUpState({
+    @Default(false) bool topUpInProgress,
+    @Default(false) bool topUpDone,
+    @Default('') String errorInPerformingTopUp,
+    @Default(0) int topUpAmount,
+  }) = _TopUpState;
 
-final class TopUpInitial extends TopUpState {}
+  factory TopUpState.initial() => TopUpState();
+}

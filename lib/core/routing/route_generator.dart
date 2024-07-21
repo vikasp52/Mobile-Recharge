@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_recharge/features/add_beneficiary/add_beneficiary.dart';
 import 'package:mobile_recharge/features/add_beneficiary/cubit/add_beneficiary_cubit.dart';
 import 'package:mobile_recharge/features/home/data/model/user.dart';
+import 'package:mobile_recharge/features/recharge/cubit/top_up_cubit.dart';
 import 'package:mobile_recharge/features/recharge/presentation/recharge.dart';
 
 class RouteGenerator {
@@ -41,10 +42,17 @@ class RouteGenerator {
 
       case rechargeRoute:
         final data = routeSettings.arguments as Map<String, Object>;
+        final user = data['user'] as User;
+        final beneficiary = data['beneficiary'] as Beneficiary;
 
-        screen = Recharge(
-          user: data['user'] as User,
-          beneficiary: data['beneficiary'] as Beneficiary,
+        screen = BlocProvider(
+          create: (context) => TopUpCubit(
+            user,
+          ),
+          child: Recharge(
+            user: user,
+            beneficiary: beneficiary,
+          ),
         );
         break;
 

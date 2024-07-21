@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_recharge/core/utils/utils.dart';
 import 'package:mobile_recharge/features/add_beneficiary/cubit/add_beneficiary_cubit.dart';
@@ -44,6 +45,9 @@ class _AddBeneficiaryState extends State<AddBeneficiary> {
                   hintText: 'Enter your nickname',
                   counterText: '',
                 ),
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(RegExp("[a-zA-Z\\s]")),
+                ],
                 validator: nameValidation,
               ),
               const SizedBox(
@@ -52,12 +56,17 @@ class _AddBeneficiaryState extends State<AddBeneficiary> {
               TextFormField(
                 controller: _mobileNumberController,
                 keyboardType: TextInputType.number,
-                maxLength: 10,
+                maxLength: 9,
                 decoration: const InputDecoration(
-                  prefixText: '+971',
+                  prefixText: '+971 ',
                   hintText: 'Enter your mobile number',
                   counterText: '',
                 ),
+                inputFormatters: [
+                  FilteringTextInputFormatter.allow(
+                    RegExp("[0-9]"),
+                  ),
+                ],
                 validator: phoneValidation,
               ),
               const SizedBox(
@@ -101,9 +110,11 @@ class _AddBeneficiaryState extends State<AddBeneficiary> {
                         } else {
                           _formKey.currentState!.save();
                           final beneficiarie = Beneficiary(
-                              nickname: _nickNameController.text,
-                              mobile: _mobileNumberController.text,
-                              totalTopUp: 0);
+                            id: generateId(),
+                            nickname: _nickNameController.text,
+                            mobile: '+971${_mobileNumberController.text}',
+                            transactions: [],
+                          );
                           cubit.addBeneficiary(beneficiarie);
                         }
                       },

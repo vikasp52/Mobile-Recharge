@@ -19,7 +19,6 @@ class UserCubit extends Cubit<UserState> {
   final UserRepository userRepository;
 
   Future<void> getUserDetails() async {
-    print('getUserDetails called');
     emit(
       state.copyWith(
         gettingUserDataInProgress: true,

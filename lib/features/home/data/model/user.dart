@@ -37,9 +37,21 @@ class Beneficiary with _$Beneficiary {
     String? id,
     required String? nickname,
     required String? mobile,
-    required int? totalTopUp,
+    required List<TopUpTransaction> transactions,
   }) = _Beneficiary;
 
   factory Beneficiary.fromJson(Map<String, Object?> json) =>
       _$BeneficiaryFromJson(json);
+}
+
+@freezed
+class TopUpTransaction with _$TopUpTransaction {
+  @JsonSerializable(includeIfNull: false)
+  const factory TopUpTransaction({
+    required DateTime date,
+    required int amount,
+  }) = _TopUpTransaction;
+
+  factory TopUpTransaction.fromJson(Map<String, Object?> json) =>
+      _$TopUpTransactionFromJson(json);
 }

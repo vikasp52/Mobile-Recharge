@@ -1,5 +1,5 @@
 String? phoneValidation(value) {
-  if ((value?.isEmpty ?? true) || (value!.length != 10)) {
+  if ((value?.isEmpty ?? true) || (value!.length != 9)) {
     return 'Enter a valid mobile number';
   }
   return null;

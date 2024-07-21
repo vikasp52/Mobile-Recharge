@@ -48,7 +48,9 @@ _$BeneficiaryImpl _$$BeneficiaryImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       nickname: json['nickname'] as String?,
       mobile: json['mobile'] as String?,
-      totalTopUp: (json['totalTopUp'] as num?)?.toInt(),
+      transactions: (json['transactions'] as List<dynamic>)
+          .map((e) => TopUpTransaction.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$BeneficiaryImplToJson(_$BeneficiaryImpl instance) {
@@ -63,6 +65,20 @@ Map<String, dynamic> _$$BeneficiaryImplToJson(_$BeneficiaryImpl instance) {
   writeNotNull('id', instance.id);
   writeNotNull('nickname', instance.nickname);
   writeNotNull('mobile', instance.mobile);
-  writeNotNull('totalTopUp', instance.totalTopUp);
+  val['transactions'] = instance.transactions;
   return val;
 }
+
+_$TopUpTransactionImpl _$$TopUpTransactionImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TopUpTransactionImpl(
+      date: DateTime.parse(json['date'] as String),
+      amount: (json['amount'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$TopUpTransactionImplToJson(
+        _$TopUpTransactionImpl instance) =>
+    <String, dynamic>{
+      'date': instance.date.toIso8601String(),
+      'amount': instance.amount,
+    };

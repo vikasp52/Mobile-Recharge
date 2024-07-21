@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_recharge/core/assets/assets.dart';
 import 'package:mobile_recharge/features/home/data/model/user.dart';
+import 'package:mobile_recharge/features/recharge/cubit/top_up_cubit.dart';
 
 class Recharge extends StatelessWidget {
   const Recharge({
@@ -14,6 +16,8 @@ class Recharge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<TopUpCubit>();
+
     List<int> topUpOptions = [5, 10, 20, 30, 50, 75, 100];
 
     return Scaffold(
@@ -86,19 +90,7 @@ class Recharge extends StatelessWidget {
               height: 6,
             ),
             DropdownButtonFormField<int>(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: const BorderSide(
-                    color: CustomColors.black,
-                    width: 1,
-                  ),
-                ),
-              ),
-              //value: 10,
+              decoration: dropDownDecoration(),
               hint: const Text('Select the amount'),
               items: topUpOptions
                   .map((value) => DropdownMenuItem(
@@ -107,23 +99,70 @@ class Recharge extends StatelessWidget {
                       ))
                   .toList(),
               onChanged: (value) {
-                //
+                if (value != null) {
+                  cubit.setAmount(value);
+                }
               },
             ),
             const SizedBox(
               height: 20,
             ),
-            SizedBox(
-              width: double.maxFinite,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                child: const Text(
-                  'Recharge now',
-                ),
-              ),
+            BlocConsumer<TopUpCubit, TopUpState>(
+              listener: (context, state) {
+                if (state.errorInPerformingTopUp.isNotEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(state.errorInPerformingTopUp),
+                    ),
+                  );
+                }
+
+                if (state.topUpDone) {
+                  Navigator.pop(context, true);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Topup done successfully!'),
+                    ),
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state.topUpInProgress) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+
+                return SizedBox(
+                  width: double.maxFinite,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      cubit.performTopUp(beneficiary);
+                    },
+                    child: const Text(
+                      'Recharge now',
+                    ),
+                  ),
+                );
+              },
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  InputDecoration dropDownDecoration() {
+    return InputDecoration(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10.0),
+        borderSide: const BorderSide(
+          color: CustomColors.black,
+          width: 1,
         ),
       ),
     );
