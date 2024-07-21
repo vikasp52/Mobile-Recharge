@@ -1,6 +1,6 @@
 # Mobile Recharge
 
-This repository contains a Flutter-based mobile recharge app. The app allows users to manage and top-up their beneficiaries' mobile balances. The project utilizes local JSON files for mocked data and follows the repository pattern to structure the data layer.
+This repository contains a Flutter-based mobile recharge app. The app allows users to manage and top-up their beneficiaries mobile balances. The project utilizes local JSON files for mocked data and follows the repository pattern to structure the data layer.
 
 ## Features
 
