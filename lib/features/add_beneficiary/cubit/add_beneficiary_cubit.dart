@@ -25,14 +25,10 @@ class AddBeneficiaryCubit extends Cubit<AddBeneficiaryState> {
       User userData = await beneficiaryManager.loadUserData();
       final beneficiaries = userData.beneficiaries ?? [];
 
-      print('addBeneficiary beneficiaries: $beneficiaries');
-
       if (beneficiaries.length < 5) {
         try {
           final user = userData.copyWith(
               beneficiaries: [...?userData.beneficiaries, beneficiarie]);
-
-          print('addBeneficiary beneficiaries updated: $user');
 
           await beneficiaryManager.saveUserMockData(user);
 
@@ -43,12 +39,10 @@ class AddBeneficiaryCubit extends Cubit<AddBeneficiaryState> {
             ),
           );
         } on Exception catch (e) {
-          print('addBeneficiary beneficiaries error1: $e');
-
           emit(
             state.copyWith(
               addingBeneficiarieInProgress: false,
-              errorInAddingBeneficiarie: 'Something went wrong!',
+              errorInAddingBeneficiarie: e.toString(),
             ),
           );
         }
@@ -61,12 +55,10 @@ class AddBeneficiaryCubit extends Cubit<AddBeneficiaryState> {
         );
       }
     } on Exception catch (e) {
-      print('addBeneficiary beneficiaries error: $e');
-
       emit(
         state.copyWith(
           addingBeneficiarieInProgress: false,
-          errorInAddingBeneficiarie: 'Something went wrong!',
+          errorInAddingBeneficiarie: e.toString(),
         ),
       );
     }

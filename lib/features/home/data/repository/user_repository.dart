@@ -13,11 +13,8 @@ class UserRepository {
     try {
       final response = await _userDataSource.getUserData();
 
-      print('response is: $response');
-
       return Right(response);
     } catch (error) {
-      print('error is: $error');
       return Left(
         handleError(error),
       );

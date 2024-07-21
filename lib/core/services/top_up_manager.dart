@@ -33,12 +33,10 @@ class TopUpManager {
 
     // Loop through each beneficiary
     for (var beneficiary in user.beneficiaries!) {
-      print('beneficiary are: ${beneficiary.nickname}');
       // Calculate the total top-up for this beneficiary for the current month
       int beneficiaryTopUp = beneficiary.transactions
           .where((transaction) => transaction.date.isAfter(firstDayOfMonth))
           .fold(0, (subtotal, transaction) {
-        print('beneficiary transaction are: ${transaction.amount}');
         return subtotal + transaction.amount;
       });
 

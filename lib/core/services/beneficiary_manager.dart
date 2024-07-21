@@ -31,8 +31,6 @@ class BeneficiaryManager {
   Future<File> saveUserMockData(User user) async {
     final file = await _localFile;
 
-    print('_saveUserMockData: $user');
-
     return file.writeAsString(json.encode(user));
   }
 }

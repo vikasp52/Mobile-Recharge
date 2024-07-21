@@ -36,8 +36,6 @@ class TopUpCubit extends Cubit<TopUpState> {
       state.topUpAmount,
     );
 
-    print('canPerformTopUp is: $canPerformTopUp');
-
     if (canPerformTopUp == null) {
       User userData = await beneficiaryManager.loadUserData();
       final beneficiaries = userData.beneficiaries!;
@@ -74,8 +72,6 @@ class TopUpCubit extends Cubit<TopUpState> {
             ),
             beneficiaries: updatedBeneficiaries,
           );
-
-          print('updatedUser: $updatedUser');
         }
       }
 

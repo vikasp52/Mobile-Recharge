@@ -17,11 +17,8 @@ class MockApiClient implements UserDataSource {
     final beneficiaries = userData.beneficiaries ?? [];
 
     if (beneficiaries.isNotEmpty) {
-      print('getMockUsers if called');
       return userData;
     }
-
-    print('getMockUsers else called');
 
     final response = await loadMockData(Assets.mockUser);
     User user = User.fromJson(json.decode(response));

@@ -28,8 +28,6 @@ class UserCubit extends Cubit<UserState> {
 
     final userDetails = await userRepository.getUserData();
 
-    print('userDetails are: $userDetails');
-
     userDetails?.fold(
       (l) {
         emit(
@@ -40,7 +38,6 @@ class UserCubit extends Cubit<UserState> {
         );
       },
       (r) {
-        print('userDetails user: ${r.user.toString()}');
         emit(
           state.copyWith(
             gettingUserDataInProgress: false,
