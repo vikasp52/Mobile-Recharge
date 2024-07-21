@@ -61,8 +61,7 @@ The app uses the flutter_bloc package to manage state with Cubits. Each feature 
 
 ## Screenshots
 
-![Mobile Recharge](screenshots/Screenshot1.jpeg) | ![Mobile Recharge](screenshots/Screenshot2.jpeg)
-![Mobile Recharge](screenshots/Screenshot3.jpeg) | ![Mobile Recharge](screenshots/Screenshot4.jpeg)
+![Mobile Recharge](screenshots/MobileRechange.png) 
 
 ### Prerequisites
 
