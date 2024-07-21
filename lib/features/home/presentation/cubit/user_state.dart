@@ -1,6 +1,5 @@
 part of 'user_cubit.dart';
 
-
 @freezed
 abstract class UserState with _$UserState {
   factory UserState({
@@ -9,5 +8,9 @@ abstract class UserState with _$UserState {
     @Default('') String errorInGettingUserData,
   }) = _UserState;
 
-  factory UserState.initial() => UserState();
+  factory UserState.initial() => UserState(
+        errorInGettingUserData: '',
+        gettingUserDataInProgress: true,
+        user: null,
+      );
 }

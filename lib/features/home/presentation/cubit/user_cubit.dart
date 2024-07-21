@@ -16,7 +16,7 @@ class UserCubit extends Cubit<UserState> {
     getUserDetails();
   }
 
-  final UserRepository userRepository;
+  UserRepository userRepository;
 
   Future<void> getUserDetails() async {
     emit(

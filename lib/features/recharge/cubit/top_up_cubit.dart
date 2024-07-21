@@ -14,8 +14,8 @@ class TopUpCubit extends Cubit<TopUpState> {
       : topUpManager = TopUpManager(user: user),
         super(TopUpState.initial());
 
-  final TopUpManager topUpManager;
-  final beneficiaryManager = BeneficiaryManager();
+  TopUpManager topUpManager;
+  BeneficiaryManager beneficiaryManager = BeneficiaryManager();
 
   void setAmount(int amount) {
     emit(state.copyWith(topUpAmount: amount));
