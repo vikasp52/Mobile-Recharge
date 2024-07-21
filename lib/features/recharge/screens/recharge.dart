@@ -54,7 +54,10 @@ class Recharge extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            RechargeNowButton(cubit: cubit, beneficiary: beneficiary),
+            RechargeNowButton(
+              cubit: cubit,
+              beneficiary: beneficiary,
+            ),
           ],
         ),
       ),
